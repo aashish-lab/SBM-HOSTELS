@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: sbm-hostels
+    env: python
+    buildCommand: pip install -r requirements.txt && python database.py
+    startCommand: gunicorn wsgi:app
+    plan: free
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
